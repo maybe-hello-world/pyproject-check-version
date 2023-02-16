@@ -1,6 +1,9 @@
 # action.yaml
 name: "Python project version check"
 description: "Compare Python package version from pyproject.toml and PyPI release and return true if local version is higher."
+branding:
+  icon: 'aperture'
+  color: 'green'
 inputs:
   pyproject-path:
     description: "location of pyproject file"
