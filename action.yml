@@ -1,0 +1,17 @@
+# action.yaml
+name: "Python project version check"
+description: "Compare Python package version from pyproject.toml and public PyPI and return True if local version is higher than public version."
+inputs:
+  pyproject-path:
+    description: "location of pyproject file"
+    required: true
+    default: "."
+outputs:
+  local_version_is_higher:
+    description: "True if local version is higher than public version"
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pyproject-path }}
