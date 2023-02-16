@@ -22,5 +22,6 @@ if __name__ == '__main__':
     project_version = version.parse(project['project']['version'])
     public_project_version = get_public_version(project['project']['name'])
 
-    os.environ['GITHUB_OUTPUT'] = f"local_version_is_higher={str(project_version > public_project_version).lower()}"
+    with open(os.environ['GITHUB_OUTPUT'], 'at') as f:
+        f.write(f"local_version_is_higher={str(project_version > public_project_version).lower()}")
 
