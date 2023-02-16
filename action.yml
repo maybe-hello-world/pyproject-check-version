@@ -1,6 +1,6 @@
 # action.yaml
 name: "Python project version check"
-description: "Compare Python package version from pyproject.toml and public PyPI and return True if local version is higher than public version."
+description: "Compare Python package version from pyproject.toml and PyPI release and return true if local version is higher."
 inputs:
   pyproject-path:
     description: "location of pyproject file"
