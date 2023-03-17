@@ -17,11 +17,14 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Check pypi versions
-        uses: maybe-hello-world/pyproject-check-version@main
+        uses: maybe-hello-world/pyproject-check-version@v2
         id: versioncheck
         with:
           pyproject-path: "./project-base-folder"
       
       - name: check output
-        run: echo "Output ${{ steps.versioncheck.outputs.local_version_is_higher }}"  # 'true' or 'false
+        run: |
+            echo "Output: ${{ steps.versioncheck.outputs.local_version_is_higher }}"  # 'true' or 'false
+            echo "Local version: ${{ steps.versioncheck.outputs.local_version }}"     # e.g., 0.1.1
+            echo "Public version: ${{ steps.versioncheck.outputs.public_version }}"   # e.g., 0.1.0
 ```
