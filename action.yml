@@ -12,6 +12,10 @@ inputs:
 outputs:
   local_version_is_higher:
     description: "True if local version is higher than public version"
+  local_version:
+    description: "Local version of the package"
+  public_version:
+    description: "Public version of the package"
 
 runs:
   using: 'docker'
