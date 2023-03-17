@@ -15,8 +15,8 @@ def get_public_version(project_name: str) -> Version:
 
 
 if __name__ == '__main__':
-    project_path = sys.argv[1]
-    with open(os.path.join(project_path, 'pyproject.toml'), 'rb') as f:
+    pyproject_toml_path = sys.argv[1]
+    with open(pyproject_toml_path, 'rb') as f:
         project = tomli.load(f)
 
     project_version = version.parse(project['project']['version'])

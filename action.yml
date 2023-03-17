@@ -8,7 +8,7 @@ inputs:
   pyproject-path:
     description: "location of pyproject file"
     required: true
-    default: "."
+    default: "./pyproject.toml"
 outputs:
   local_version_is_higher:
     description: "True if local version is higher than public version"

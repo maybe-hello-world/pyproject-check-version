@@ -20,7 +20,7 @@ jobs:
         uses: maybe-hello-world/pyproject-check-version@v2
         id: versioncheck
         with:
-          pyproject-path: "./project-base-folder"
+          pyproject-path: "./pyproject.toml"    # default value
       
       - name: check output
         run: |
