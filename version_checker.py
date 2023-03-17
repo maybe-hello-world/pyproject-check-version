@@ -24,4 +24,6 @@ if __name__ == '__main__':
 
     with open(os.environ['GITHUB_OUTPUT'], 'at') as f:
         f.write(f"local_version_is_higher={str(project_version > public_project_version).lower()}")
+        f.write(f"local_version={str(project_version)}")
+        f.write(f"public_version={str(public_project_version)}")
 
