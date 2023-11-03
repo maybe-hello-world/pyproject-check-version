@@ -9,10 +9,9 @@ inputs:
     description: "location of pyproject file"
     required: true
     default: "./pyproject.toml"
-  test:
-    description: "whether destination is test.pypi.org or not"
+  test_regex:
+    description: "regex for testing whether destination is test.pypi.org or not"
     required: false
-    default: 0
 outputs:
   local_version_is_higher:
     description: "True if local version is higher than public version"

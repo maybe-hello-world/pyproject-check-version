@@ -1,4 +1,5 @@
 import argparse
+import re
 import sys
 import tomli
 import os
@@ -18,14 +19,19 @@ def get_public_version(project_name: str, is_test = False) -> Version:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('pyproject')
-    parser.add_argument('-t', '--test')
+    parser.add_argument('-t', '--test_regex')
     args = parser.parse_args()
     pyproject_toml_path = args.pyproject
     with open(pyproject_toml_path, 'rb') as f:
         project = tomli.load(f)
 
     project_version = version.parse(project['project']['version'])
-    public_project_version = get_public_version(project['project']['name'], args.test == '1')
+    is_test = False
+    if args.test_regex:
+        test_regex = re.compile(args.test_regex)
+        if test_regex.search(project_version):
+            is_test = True
+    public_project_version = get_public_version(project['project']['name'], is_test)
 
     with open(os.environ['GITHUB_OUTPUT'], 'at') as f:
         f.write(f"local_version_is_higher={str(project_version > public_project_version).lower()}\n")
