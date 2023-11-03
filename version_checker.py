@@ -1,4 +1,3 @@
-import argparse
 import re
 import sys
 import tomli
@@ -17,19 +16,15 @@ def get_public_version(project_name: str, is_test = False) -> Version:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('pyproject')
-    parser.add_argument('test_regex')
-    args = parser.parse_args()
-    pyproject_toml_path = args.pyproject
+    pyproject_toml_path = sys.argv[1]
+    test_regex = sys.argv[2]
     with open(pyproject_toml_path, 'rb') as f:
         project = tomli.load(f)
 
     project_version = version.parse(project['project']['version'])
     is_test = False
-    if args.test_regex:
-        test_regex = re.compile(args.test_regex)
-        if test_regex.search(project_version):
+    if test_regex:
+        if re.compile(test_regex).search(project_version):
             is_test = True
     public_project_version = get_public_version(project['project']['name'], is_test)
 
