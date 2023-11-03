@@ -23,15 +23,9 @@ if __name__ == '__main__':
 
     project_version = version.parse(project['project']['version'])
     is_test = False
-    print(pyproject_toml_path)
-    print(test_regex)
     if test_regex:
-        re.compile(test_regex)
-        if re.compile(test_regex).search(project_version):
-            print('is test')
+        if re.compile(test_regex).search(str(project_version)):
             is_test = True
-        else:
-            print('is not test')
     public_project_version = get_public_version(project['project']['name'], is_test)
 
     with open(os.environ['GITHUB_OUTPUT'], 'at') as f:
