@@ -19,7 +19,7 @@ def get_public_version(project_name: str, is_test = False) -> Version:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('pyproject')
-    parser.add_argument('-t', '--test_regex')
+    parser.add_argument('test_regex')
     args = parser.parse_args()
     pyproject_toml_path = args.pyproject
     with open(pyproject_toml_path, 'rb') as f:
