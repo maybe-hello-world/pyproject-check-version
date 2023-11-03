@@ -32,4 +32,5 @@ if __name__ == '__main__':
         f.write(f"local_version_is_higher={str(project_version > public_project_version).lower()}\n")
         f.write(f"local_version={str(project_version)}\n")
         f.write(f"public_version={str(public_project_version)}\n")
+        f.write(f"is_test={is_test}\n")
 

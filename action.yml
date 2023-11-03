@@ -19,6 +19,8 @@ outputs:
     description: "Local version of the package"
   public_version:
     description: "Public version of the package"
+  is_test:
+    description: "Whether destination is test.pypi.org or not"
 
 runs:
   using: 'docker'
