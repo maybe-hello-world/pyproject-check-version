@@ -9,6 +9,9 @@ inputs:
     description: "location of pyproject file"
     required: true
     default: "./pyproject.toml"
+  test-regex:
+    description: "regex for testing whether destination is test.pypi.org or not"
+    required: false
 outputs:
   local_version_is_higher:
     description: "True if local version is higher than public version"
@@ -16,9 +19,12 @@ outputs:
     description: "Local version of the package"
   public_version:
     description: "Public version of the package"
+  is_test:
+    description: "Whether destination is test.pypi.org or not"
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.pyproject-path }}
+    - ${{ inputs.test-regex }}
